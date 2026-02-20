@@ -39,7 +39,7 @@ tags: [tag1, tag2]    # max 5, derived from content
 | `chain` | tokens | `base`, `ethereum`, `solana` |
 | `category` | tokens, protocols | free text |
 | `tier` | sources | `T1` through `T6` |
-| `platform` | sources | `twitter`, `moltbook`, etc. |
+| `platform` | sources | `twitter`, `reddit`, etc. |
 | `confidence` | predictions | `0`-`100` (percentage) |
 | `timeframe` | predictions | `24h`, `1w`, `1m` |
 | `outcome` | predictions | `pending`, `correct`, `wrong` |
