@@ -58,21 +58,22 @@ fi
 
 # 3. MISSING LINKS CHECK (real wikilink validation)
 BROKEN_LINKS=0
-declare -A KNOWN_BASES
-while IFS= read -r f; do
-  KNOWN_BASES["$(basename "$f" .md)"]=1
-done < <(find "$MEMORY_DIR" -name "*.md" -not -path "*/.obsidian/*")
+KNOWN_BASES_FILE=$(mktemp)
+find "$MEMORY_DIR" -name "*.md" -not -path "*/.obsidian/*" | while IFS= read -r f; do
+  basename "$f" .md
+done | sort -u > "$KNOWN_BASES_FILE"
 
 while IFS= read -r f; do
   while IFS= read -r match; do
     link=$(echo "$match" | sed 's/\[\[//;s/\]\]//;s/|.*//' | sed 's/#.*//')
     [ -z "$link" ] && continue
-    [[ "$link" == http* ]] && continue
-    if [ -z "${KNOWN_BASES[$link]+x}" ]; then
+    case "$link" in http*) continue ;; esac
+    if ! grep -qx "$link" "$KNOWN_BASES_FILE"; then
       BROKEN_LINKS=$((BROKEN_LINKS + 1))
     fi
   done < <(grep -oE '\[\[[^]]+\]\]' "$f" 2>/dev/null || true)
 done < <(find "$MEMORY_DIR" -name "*.md" -not -path "*/.obsidian/*")
+rm -f "$KNOWN_BASES_FILE"
 
 if [ "$BROKEN_LINKS" -eq 0 ]; then
   echo "✅ Missing links:  0 broken wikilinks"
