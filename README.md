@@ -20,7 +20,6 @@
   <a href="#comparison">Comparison</a> •
   <a href="#chapters">Chapters</a> •
   <a href="#scripts">Scripts</a> •
-  <a href="#roadmap">Roadmap</a> •
   <a href="#contributing">Contributing</a>
 </p>
 
@@ -238,26 +237,6 @@ Score: 10/10 (100%) — ✅ HEALTHY
 | 3 | **Write-through** | Save immediately, not "later". Deferred writes = lost data. |
 | 4 | **Structured but simple** | YAML frontmatter + wikilinks. That's the whole stack. |
 | 5 | **Verify, don't trust** | Health checks catch drift before it becomes a problem. |
-
-<p align="right">(<a href="#the-problem">back to top</a>)</p>
-
----
-
-<a id="roadmap"></a>
-
-## Roadmap
-
-- [x] 13 chapters covering full memory architecture
-- [x] 4 working bash scripts
-- [x] 9 file templates
-- [x] Obsidian configuration + plugin recommendations
-- [x] OpenClaw integration guide
-- [ ] More platform guides (Claude Code, Cursor, Windsurf)
-- [ ] Example vault with sample data you can clone
-- [ ] Video walkthrough
-- [ ] Community patterns & templates gallery
-
-See [open issues](https://github.com/Qu4ntking/ai-memory-guide/issues) for feature requests.
 
 <p align="right">(<a href="#the-problem">back to top</a>)</p>
 
